@@ -5,7 +5,7 @@ const (
 )
 
 // As there's no specific Powershell DSC that runs powershell scripts we create a custom resource
-func ExecutePowershellScript(id string, name string, pwshell string, run string) (*WinGetResource, error) {
+func ExecutePowershellScript(id string, name string, pwshell string, run string, executable string) (*WinGetResource, error) {
 	r := WinGetResource{}
 	r.Resource = OpenUEMPowershell
 
@@ -15,6 +15,7 @@ func ExecutePowershellScript(id string, name string, pwshell string, run string)
 	r.Settings["Script"] = pwshell
 	r.Settings["ScriptRun"] = run
 	r.Settings["Name"] = name
+	r.Settings["Executable"] = executable
 
 	return &r, nil
 }
